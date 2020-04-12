@@ -1,0 +1,37 @@
+<div class="row" *ngIf="show">
+    <div class="col-lg"></div>
+    <div class="col-lg4" id="form">
+        <div class="alert alert-warning" role="alert" *ngIf="error">
+            Los credenciales introducidos no son los correctos
+        </div>
+        <h2>Formulario de inicio de sesi&oacute;n</h2>
+        <form (ngSubmit)="save()" #forma="ngForm">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input name="email" type="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                    required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email necesario
+                    </div>
+                    <div *ngIf="email.errors && email.errors.pattern">
+                        Email no correcto
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" type="password" required #password="ngModel" [(ngModel)]="user.password" class="form-control" id="password" placeholder="Enter password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                        Password necesario
+                    </div>
+                </div>
+            </div>
+
+            <button [disabled]="!forma.valid" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-lg"></div>
+</div>

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css';
+.container {
+    margin-top: 50px;
+}
+
+#form {
+    background-color: #f2f3f4;
+    -webkit-box-shadow: 11px 10px 12px 7px rgba(158, 150, 158, 1);
+    -moz-box-shadow: 11px 10px 12px 7px rgba(158, 150, 158, 1);
+    box-shadow: 11px 10px 12px 7px rgba(158, 150, 158, 1);
+}
